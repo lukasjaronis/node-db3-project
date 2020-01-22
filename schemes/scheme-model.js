@@ -22,10 +22,10 @@ function findById(id) {
 
 function findSteps(schemeId) {
     return database("steps")
-        .join("schemes", "schemes.id", "steps.scheme_id")
+        .join("schemes", "schemes.id", "steps.scheme_id") // joining to display together same FK ID
         .where({scheme_id: schemeId})
-        .select("schemes.scheme_name", "steps.step_number", "steps.instructions")
-        .orderBy("steps.step_number")
+        .select("schemes.scheme_name", "steps.step_number", "steps.instructions") // pretty much formatting the way to display the data when requested
+        .orderBy("steps.step_number") // ordering the list by the step number
 }
 
 async function add(data) {
